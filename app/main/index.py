@@ -6,6 +6,6 @@ from flask import current_app as app
 
 main = Blueprint('main', __name__, url_prefix='/') #how define nae, URL is after /
 
-@main.route('/main', method=['GET']) #define route in file
+@main.route('/main', methods=['GET']) #define route in file
 def index():
     return render_template('/main/index.html') #<- same as /project_name/app/templates/main/index.html
