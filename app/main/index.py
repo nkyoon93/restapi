@@ -8,4 +8,6 @@ main = Blueprint('main', __name__, url_prefix='/') #how define nae, URL is after
 
 @main.route('/main', methods=['GET']) #define route in file
 def index():
-    return render_template('/main/index.html') #<- same as /project_name/app/templates/main/index.html
+    testData = 'testData array' #data to HTML file
+
+    return render_template('/main/index.html', testDataHtml = testData) #<- same as /project_name/app/templates/main/index.html
