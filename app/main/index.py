@@ -1,0 +1,11 @@
+#2nd script for main page
+
+
+from flask import Blueprint, request, render_template, flash, redirect, url_for
+from flask import current_app as app
+
+main = Blueprint('main', __name__, url_prefix='/') #how define nae, URL is after /
+
+@main.route('/main', method=['GET']) #define route in file
+def index():
+    return render_template('/main/index.html') #<- same as /project_name/app/templates/main/index.html
