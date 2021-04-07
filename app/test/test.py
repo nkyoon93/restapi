@@ -20,7 +20,7 @@ def insert():
     db_class.commit()
 
     return render_template('/test/test.html',
-                           result=None,
+                           result='insert!',
                            resultData=None,
                            resultUPDATE=None)
 
@@ -35,5 +35,23 @@ def select():
 
     return render_template('/test/test.html',
                            result=None,
-                           resultData=None,
+                           resultData=row[0],
                            resultUPDATE=None)
+
+#UPdate function
+@test.route('/update', methods=['GET'])
+def update():
+    db_class = dbModule.Database()
+    sql      = "UPDATE testDB.testTable \
+                SET test='%s' \
+                WHERE test='testData' " % ('update_Data')
+    db_class.execute(sql)
+    db_class.commit()
+    sql      = "SELECT idx, test \
+                FROM testDB.testTable"
+    row      =  db_class.executeAll(sql)
+
+    return render_template('/test/test.html',
+                           result=None,
+                           resultData=None,
+                           resultUPDATE=row[0])
